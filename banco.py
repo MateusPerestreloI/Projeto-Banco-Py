@@ -8,6 +8,10 @@ contas: List[Conta] = []
 
 
 def main() -> None:
+    contas.append(Conta(Cliente(nome='Fernando', email='fernando@gmail.com',
+                        cpf='123.456.789-00', data_nascimento='05/06/1996')))
+    contas.append(Conta(Cliente(nome='Juliana', email='juliajna@gmail.com',
+                        cpf='987.654.321-00', data_nascimento='05/06/1985')))
     menu()
 
 
@@ -62,6 +66,7 @@ def criar_conta() -> None:
     contas.append(conta)
 
     print('Conta criada com sucesso!')
+    print('-----------------------------------------')
     print('Dados da conta: ')
     print(conta)
     sleep(2)
@@ -83,8 +88,8 @@ def efetuar_saque() -> None:
             print(f'Não foi encontrada a conta com número: {numero}')
     else:
         print('Ainda não existe(m) conta(s) cadastrada(s)')
-        sleep(1)
-        menu()
+    sleep(1)
+    menu()
 
 
 def efetuar_deposito() -> None:
@@ -102,8 +107,8 @@ def efetuar_deposito() -> None:
             print(f'Não foi encontrada a conta com número: {numero}')
     else:
         print('Ainda não existe(m) conta(s) cadastrada(s)')
-        sleep(1)
-        menu()
+    sleep(1)
+    menu()
 
 
 def efetuar_transferencia() -> None:
@@ -120,15 +125,15 @@ def efetuar_transferencia() -> None:
             if conta_destino:
                 valor: float = float(input('Informe o valor da transferência: '))
 
-                conta_origem.transferir(destino=numero_destino, valor=valor)
+                conta_origem.transferir(destino=conta_destino, valor=valor)
             else:
                 print(f'Não foi encontrada a conta de destino com número: {numero_origem} ')
         else:
             print(f'Não foi encontrada a sua conta com número: {numero_origem} ')
     else:
         print('Ainda não existe(m) conta(s) cadastrada(s)')
-        sleep(1)
-        menu()
+    sleep(1)
+    menu()
 
 
 def listar_contas() -> None:
@@ -141,8 +146,8 @@ def listar_contas() -> None:
             sleep(1)
     else:
         print('Ainda não existe(m) conta(s) cadastrada(s)')
-        sleep(1)
-        menu()
+    sleep(1)
+    menu()
 
 
 def buscar_conta_por_numero(numero: int) -> Conta:
